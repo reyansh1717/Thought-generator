@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thoughts Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f7f7f7;
+      color: #333;
+      margin: 0;
+      padding: 50px;
+    }
+    #quote {
+      font-size: 1.5rem;
+      margin: 20px 0;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: white;
+      background-color: #6d6875;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    button:hover {
+      background-color: #b5838d;
+    }
+    #clearButton {
+      display: none; /* Hidden by default */
+    }
+  </style>
+</head>
+<body>
+  <h1>Thoughts</h1>
+  <div id="quote"></div>
+  <button onclick="generateQuote()">Thought</button>
+  <button id="clearButton" onclick="clearQuotes()">Clear</button>
+
+  <script>
+    const quotes = [
+      "Keep calm and focus in the carrier.",
+      "I will never let u go down, Don't give up.",
+      "Its all abut time and situation, just like the black cloud in the atmosphere.",
+      "Trust me.",
+      "God will fix everything.",
+      "Keep smiling and be positive, and you will realize everything is under control.",
+      " "
+    ];
+    let currentIndex = 0;
+
+    function generateQuote() {
+      const quoteContainer = document.getElementById('quote');
+      const newQuote = document.createElement('p');
+      newQuote.textContent = quotes[currentIndex];
+      quoteContainer.appendChild(newQuote);
+      currentIndex++;
+
+      // Show the clear button after all quotes are printed
+      if (currentIndex === quotes.length) {
+        document.getElementById('clearButton').style.display = 'inline-block';
+      }
+    }
+
+    function clearQuotes() {
+      document.getElementById('quote').innerHTML = ''; // Clear all quotes
+      currentIndex = 0; // Reset the index
+      document.getElementById('clearButton').style.display = 'none'; // Hide the button again
+    }
+  </script>
+</body>
+</html>
